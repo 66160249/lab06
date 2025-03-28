@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lab 6</h1>
+        <p>ผลลัพธ์จะแสดงด้านล่างและใน Console (กด F12 เพื่อดู Console)</p>
+        <div id="output"></div>
+    </div>
+    
+    <script>
+        let yourname = "Thanaphat Surangkharat"; 
+        let age = 20;             
+        let gpa = 3.45;         
+        let isStudent = true;    
+
+        function checkGrade(score) {
+            if (score >= 80) {
+                return "A";
+            } else if (score >= 70) {
+                return "B";
+            } else if (score >= 60) {
+                return "C";
+            } else if (score >= 50) {
+                return "D";
+            } else {
+                return "F";
+            }
+        }
+
+        function calculateBMI(weight, height) {
+            return weight / (height * height);
+        }
+
+        function celsiusToFahrenheit(celsius) {
+            return (celsius * 9/5) + 32;
+        }
+
+        function fahrenheitToCelsius(fahrenheit) {
+            return (fahrenheit - 32) * 5/9;
+        }
+
+        function addToOutput(text) {
+            const div = document.createElement('div');
+            div.className = 'result';
+            div.textContent = text;
+            document.getElementById('output').appendChild(div);
+            console.log(text);
+        }
+
+        // แสดงข้อมูลส่วนตัว
+        addToOutput(`ข้อมูลส่วนตัว: ชื่อ: ${yourname}, อายุ: ${age}, เกรดเฉลี่ย: ${gpa}, สถานะนักเรียน: ${isStudent}`);
+
+        // ทดสอบการตัดเกรด
+        let score = 85;
+        addToOutput(`ผลการตัดเกรด: คะแนน ${score} ได้เกรด ${checkGrade(score)}`);
+
+        // คำนวณ BMI
+        let weight = 94;
+        let height = 1.65;
+        addToOutput(`ค่า BMI: ${calculateBMI(weight, height).toFixed(2)} (น้ำหนัก: ${weight} กก., ส่วนสูง: ${height} ม.)`);
+
+        // แปลงอุณหภูมิ
+        let celsius = 30;
+        let fahrenheit = 86;
+        addToOutput(`การแปลงอุณหภูมิ:`);
+        addToOutput(`${celsius}°C = ${celsiusToFahrenheit(celsius).toFixed(2)}°F`);
+        addToOutput(`${fahrenheit}°F = ${fahrenheitToCelsius(fahrenheit).toFixed(2)}°C`);
+    </script>
+</body>
+</html>
